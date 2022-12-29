@@ -1,14 +1,21 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import First from "../views/First.vue";
-import About from "../views/About.vue";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const routes = [
-  { path: "/", component: First },
-  { path: "/about", component: About },
+import Welcome from "../views/Welcome.vue";
+import First from "../components/welcome/First.vue";
+import Second from "../components/welcome/Second.vue";
+import Third from "../components/welcome/Third.vue";
+import Forth from "../components/welcome/Forth.vue";
+
+const routes: RouteRecordRaw[] = [
   {
     path: "/welcome",
-    component: First,
-    children: [{ path: "/1", component: First }],
+    component: Welcome,
+    children: [
+      { path: "1", component: First },
+      { path: "2", component: Second },
+      { path: "3", component: Third },
+      { path: "4", component: Forth },
+    ],
   },
 ];
 
