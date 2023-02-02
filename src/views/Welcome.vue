@@ -3,25 +3,27 @@
   <div class="wrapper">
     <header>header</header>
     <main><router-view /></main>
-    <footer>footer</footer>
   </div>
 </template>
 <style lang="scss" scoped>
 .wrapper {
-  color: red;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: linear-gradient(to bottom, #5d33be 0%, #8f4cd7 100%);
   > header {
-    background: pink;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 64px;
+    color: #d4d4ee;
   }
   > main {
-    background: blue;
-  }
-  > footer {
-    background: aqua;
-    flex-shrink: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>
