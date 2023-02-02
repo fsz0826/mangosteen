@@ -14,15 +14,14 @@
   flex-direction: column;
   > header {
     background: pink;
-    &:hover {
-      background: darkgoldenrod;
-    }
+    flex-shrink: 0;
   }
   > main {
     background: blue;
   }
   > footer {
     background: aqua;
+    flex-shrink: 0;
   }
 }
 </style>
