@@ -17,11 +17,12 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  padding-bottom: var(--welcome-nav-gap);
   > .card {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    background: var(--welcome-card--bg);
+    background: var(--welcome-card-bg);
     border-radius: 8px;
     padding: 16px;
     margin: 16px 16px 0;
@@ -38,12 +39,19 @@
     }
   }
   > .actions {
+    position: fixed;
+    z-index: var(--z-index-bottom-nav);
+    background: var(--welcome-bg-end);
+    left: 0;
+    bottom: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 16px;
-    font-size: 32px;
-    padding: 24px 0;
+    font-size: 24px;
+    height: var(--welcome-nav-height);
+    padding: 0 16px;
+    padding-bottom: var(--welcome-nav-gap);
     color: var(--welcome-text);
     > .fake {
       visibility: hidden;
