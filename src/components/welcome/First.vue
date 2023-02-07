@@ -2,7 +2,7 @@
 <template>
   <div class="first_wrapper">
     <div class="card">
-      <img class="pig" src="" alt="" />
+      <img class="icon" src="" alt="" />
       <h2>会挣钱<br />还要会省钱</h2>
     </div>
     <div class="actions">
@@ -33,7 +33,7 @@
     > h2 {
       margin-top: 40px;
     }
-    > .pig {
+    > .icon {
       width: 100px;
       height: 100px;
     }
@@ -49,10 +49,11 @@
     justify-content: space-between;
     align-items: center;
     font-size: 24px;
+    color: var(--welcome-text);
     height: var(--welcome-nav-height);
     padding: 0 16px;
     padding-bottom: var(--welcome-nav-gap);
-    color: var(--welcome-text);
+
     > .fake {
       visibility: hidden;
     }
