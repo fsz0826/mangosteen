@@ -5,7 +5,14 @@
       <img class="logo" src="" alt="" />
       <h1>飞老板飞老板</h1>
     </header>
-    <main><router-view /></main>
+    <main>
+      <router-view name="main" v-slot="{ Component, route }">
+        <transition name="slide-fade"
+          ><component :is="Component" />
+        </transition>
+      </router-view>
+    </main>
+    <footer><router-view name="footer" /></footer>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -40,6 +47,29 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    position: relative;
+    margin: 16px 16px var(--welcome-nav-gap);
   }
+  > footer {
+    flex-shrink: 0;
+  }
+}
+</style>
+<style>
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-out;
+}
+
+.slide-fade-enter-from {
+  transform: translateX(100vw);
+}
+.slide-fade-leave-to {
+  transform: translateX(-100vw);
 }
 </style>

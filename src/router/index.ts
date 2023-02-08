@@ -1,10 +1,15 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 import Welcome from "../views/Welcome.vue";
-import First from "../components/welcome/First.vue";
-import Second from "../components/welcome/Second.vue";
-import Third from "../components/welcome/Third.vue";
-import Forth from "../components/welcome/Forth.vue";
+
+import FirstCard from "../components/welcome/FirstCard.vue";
+import FirstAction from "../components/welcome/FirstAction.vue";
+import SecondCard from "../components/welcome/SecondCard.vue";
+import SecondAction from "../components/welcome/SecondAction.vue";
+import ThirdCard from "../components/welcome/ThirdCard.vue";
+import ThirdAction from "../components/welcome/ThirdAction.vue";
+import ForthCard from "../components/welcome/ForthCard.vue";
+import ForthAction from "../components/welcome/ForthAction.vue";
 
 const routes: RouteRecordRaw[] = [
   { path: "/", redirect: "/welcome" },
@@ -13,10 +18,10 @@ const routes: RouteRecordRaw[] = [
     component: Welcome,
     children: [
       { path: "", redirect: "/welcome/1" },
-      { path: "1", component: First },
-      { path: "2", component: Second },
-      { path: "3", component: Third },
-      { path: "4", component: Forth },
+      { path: "1", components: { main: FirstCard, footer: FirstAction } },
+      { path: "2", components: { main: SecondCard, footer: SecondAction } },
+      { path: "3", components: { main: ThirdCard, footer: ThirdAction } },
+      { path: "4", components: { main: ForthCard, footer: ForthAction } },
     ],
   },
 ];
