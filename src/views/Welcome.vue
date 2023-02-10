@@ -1,13 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import { useSwipe } from "../hooks/useSwipe";
+const main = ref<HTMLElement | null>(null);
+useSwipe(main);
+</script>
 <template>
   <div class="wrapper">
     <header>
-      <svg>
-        <use xlink:href="#mangosteen"></use>
-      </svg>
+      <SvgIcon name="mangosteen" />
       <h1>飞老板飞老板</h1>
     </header>
-    <main>
+    <main ref="main">
       <router-view name="main" v-slot="{ Component, route }">
         <transition name="slide-fade">
           <component :is="Component" />
