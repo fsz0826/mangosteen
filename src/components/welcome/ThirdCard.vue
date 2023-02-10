@@ -4,7 +4,9 @@ import CardLayout from "./CardLayout.vue";
 <template>
   <CardLayout>
     <template #card>
-      <img class="icon" src="" alt="" />
+      <svg>
+        <use xlink:href="#chart"></use>
+      </svg>
       <h2>数据可视化<br />不遗漏每一笔订单</h2>
     </template>
   </CardLayout>

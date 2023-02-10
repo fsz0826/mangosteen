@@ -2,17 +2,21 @@
 <template>
   <div class="wrapper">
     <header>
-      <img class="logo" src="" alt="" />
+      <svg>
+        <use xlink:href="#mangosteen"></use>
+      </svg>
       <h1>飞老板飞老板</h1>
     </header>
     <main>
       <router-view name="main" v-slot="{ Component, route }">
-        <transition name="slide-fade"
-          ><component :is="Component" />
+        <transition name="slide-fade">
+          <component :is="Component" />
         </transition>
       </router-view>
     </main>
-    <footer><router-view name="footer" /></footer>
+    <footer>
+      <router-view name="footer" />
+    </footer>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -35,9 +39,9 @@
     padding-top: 58px;
     color: #d4d4ee;
 
-    > .logo {
-      width: 100px;
-      height: 100px;
+    > svg {
+      width: 64px;
+      height: 69px;
     }
     > h1 {
       margin-top: 6px;

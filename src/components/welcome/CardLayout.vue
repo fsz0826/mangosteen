@@ -17,9 +17,9 @@
   > :deep(h2) {
     margin-top: 40px;
   }
-  > :deep(.icon) {
-    width: 100px;
-    height: 100px;
-  }
+  // > :deep(.icon) {
+  //   width: 100px;
+  //   height: 100px;
+  // }
 }
 </style>
