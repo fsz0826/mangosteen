@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useSwipe } from "../hooks/useSwipe";
 const main = ref<HTMLElement | null>(null);
-useSwipe(main);
+const { distance, direction } = useSwipe(main);
 </script>
 <template>
   <div class="wrapper">
