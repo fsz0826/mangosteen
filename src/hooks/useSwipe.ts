@@ -1,10 +1,23 @@
 import { computed, onMounted, onUnmounted, ref, Ref } from "vue";
 
 type Point = { x: number; y: number };
-export const useSwipe = (element: Ref<HTMLElement | null>) => {
-  const start = ref<Point | null>(null);
-  const end = ref<Point | null>(null);
+interface Options {
+  onStartBefore?: (e: TouchEvent) => void;
+  onStartEnd?: (e: TouchEvent) => void;
+  onMoveBefore?: (e: TouchEvent) => void;
+  onMoveEnd?: (e: TouchEvent) => void;
+  onEndBefore?: (e: TouchEvent) => void;
+  onEndEnd?: (e: TouchEvent) => void;
+}
+export const useSwipe = (
+  element: Ref<HTMLElement | undefined>,
+  options?: Options
+) => {
+  const start = ref<Point>();
+  const end = ref<Point>();
   const isSwipe = ref(false);
+
+  // 计算手指滑动距离
   const distance = computed(() => {
     if (!start.value || !end.value) {
       return null;
@@ -14,6 +27,8 @@ export const useSwipe = (element: Ref<HTMLElement | null>) => {
       y: end.value.y - start.value.y,
     };
   });
+
+  // 计算手指滑动方向
   const direction = computed(() => {
     if (!distance.value) {
       return "";
@@ -26,14 +41,17 @@ export const useSwipe = (element: Ref<HTMLElement | null>) => {
     }
   });
   const onStart = (e: TouchEvent) => {
-    start.value = {
+    // e.preventDefault();
+    options?.onStartBefore?.(e);
+    end.value = start.value = {
       x: e.touches[0].clientX,
       y: e.touches[0].clientY,
     };
-    end.value = null;
     isSwipe.value = true;
+    options?.onStartEnd?.(e);
   };
   const onMove = (e: TouchEvent) => {
+    options?.onMoveBefore?.(e);
     if (!isSwipe.value) {
       return;
     }
@@ -41,9 +59,12 @@ export const useSwipe = (element: Ref<HTMLElement | null>) => {
       x: e.touches[0].clientX,
       y: e.touches[0].clientY,
     };
+    options?.onMoveEnd?.(e);
   };
   const onEnd = (e: TouchEvent) => {
+    options?.onEndBefore?.(e);
     isSwipe.value = false;
+    options?.onEndEnd?.(e);
   };
   onMounted(() => {
     if (!element.value) return;

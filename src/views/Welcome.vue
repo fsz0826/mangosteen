@@ -1,8 +1,30 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useSwipe } from "../hooks/useSwipe";
-const main = ref<HTMLElement | null>(null);
-const { distance, direction } = useSwipe(main);
+import { throttle } from "../shared/throttle";
+const main = ref<HTMLElement>();
+const { direction, isSwipe } = useSwipe(main, {
+  onStartBefore: (e) => e.preventDefault(),
+});
+const route = useRoute();
+const router = useRouter();
+const onPush = throttle(() => {
+  if (route.name === "Welcome1") {
+    router.push({ name: "Welcome2" });
+  } else if (route.name === "Welcome2") {
+    router.push({ name: "Welcome3" });
+  } else if (route.name === "Welcome3") {
+    router.push({ name: "Welcome4" });
+  } else {
+    router.push("/start");
+  }
+}, 500);
+watchEffect(() => {
+  if (isSwipe.value && direction.value === "left") {
+    onPush();
+  }
+});
 </script>
 <template>
   <div class="wrapper">
