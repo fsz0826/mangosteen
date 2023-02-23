@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-import Welcome from "../views/Welcome.vue";
+import Welcome from "../views/WelcomePage.vue";
 
 import FirstCard from "../components/welcome/FirstCard.vue";
 import FirstAction from "../components/welcome/FirstAction.vue";
@@ -10,6 +10,7 @@ import ThirdCard from "../components/welcome/ThirdCard.vue";
 import ThirdAction from "../components/welcome/ThirdAction.vue";
 import ForthCard from "../components/welcome/ForthCard.vue";
 import ForthAction from "../components/welcome/ForthAction.vue";
+import Start from "../views/StartPage.vue";
 
 const routes: RouteRecordRaw[] = [
   { path: "/", redirect: "/welcome" },
@@ -40,6 +41,7 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  { path: "/start", component: Start },
 ];
 
 const router = createRouter({
