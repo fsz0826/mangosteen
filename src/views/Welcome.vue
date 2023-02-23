@@ -9,16 +9,16 @@ const { direction, isSwipe } = useSwipe(main, {
 });
 const route = useRoute();
 const router = useRouter();
+const pushMap: Record<string, string> = {
+  Welcome1: "Welcome2",
+  Welcome2: "Welcome3",
+  Welcome3: "Welcome4",
+  Welcome4: "/start",
+};
+
 const onPush = throttle(() => {
-  if (route.name === "Welcome1") {
-    router.push({ name: "Welcome2" });
-  } else if (route.name === "Welcome2") {
-    router.push({ name: "Welcome3" });
-  } else if (route.name === "Welcome3") {
-    router.push({ name: "Welcome4" });
-  } else {
-    router.push("/start");
-  }
+  const name = (route.name || "Welcome1").toString();
+  router.push(pushMap[name]);
 }, 500);
 watchEffect(() => {
   if (isSwipe.value && direction.value === "left") {
@@ -84,7 +84,7 @@ watchEffect(() => {
   }
 }
 </style>
-<style>
+<style lang="scss">
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   position: absolute;
@@ -92,7 +92,7 @@ watchEffect(() => {
   top: 0;
   width: 100%;
   height: 100%;
-  transition: all 0.5s ease-out;
+  transition: all var(--transition-duration) ease-out;
 }
 
 .slide-fade-enter-from {
