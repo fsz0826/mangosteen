@@ -10,19 +10,19 @@ const { direction, isSwipe } = useSwipe(main, {
 const route = useRoute();
 const router = useRouter();
 const pushMap: Record<string, string> = {
-  Welcome1: "Welcome2",
-  Welcome2: "Welcome3",
-  Welcome3: "Welcome4",
+  Welcome1: "/Welcome/2",
+  Welcome2: "/Welcome/3",
+  Welcome3: "/Welcome/4",
   Welcome4: "/start",
 };
 
-const onPush = throttle(() => {
+const onReplace = throttle(() => {
   const name = (route.name || "Welcome1").toString();
-  router.push(pushMap[name]);
+  router.replace(pushMap[name]);
 }, 500);
 watchEffect(() => {
   if (isSwipe.value && direction.value === "left") {
-    onPush();
+    onReplace();
   }
 });
 </script>
