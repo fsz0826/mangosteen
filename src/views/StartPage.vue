@@ -1,5 +1,14 @@
 <template>
-  <nav>menu</nav>
+  <nav>
+    <Navbar>
+      <template #icon>
+        <SvgIcon name=""/>
+      </template>
+      <template #title>
+        123
+      </template>
+    </Navbar>
+  </nav>
   <Center class="icon_wrapper">
     <SvgIcon name="pig" class="icon"/>
   </Center>
@@ -12,6 +21,7 @@
 import Button from "../components/shared/Button.vue";
 import FloatButton from "../components/shared/FloatButton.vue";
 import Center from "../components/shared/Center.vue";
+import Navbar from "../components/shared/Navbar.vue";
 const onClick = () => {
   console.log("click");
 };
