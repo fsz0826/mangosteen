@@ -2,11 +2,11 @@
   <div class="button_wrapper">
     <Button @click="onClick" class="button">测试</Button>
   </div>
-  <FloatBotton />
+  <FloatButton icon-name="add" />
 </template>
 <script lang="ts" setup>
 import Button from "../components/shared/Button.vue";
-import FloatBotton from "../components/shared/FloatBotton.vue";
+import FloatButton from "../components/shared/FloatButton.vue";
 const onClick = () => {
   console.log("click");
 };
