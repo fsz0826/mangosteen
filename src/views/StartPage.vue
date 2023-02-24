@@ -1,4 +1,8 @@
 <template>
+  <nav>menu</nav>
+  <Center class="icon_wrapper">
+    <SvgIcon name="pig" class="icon"/>
+  </Center>
   <div class="button_wrapper">
     <Button @click="onClick" class="button">测试</Button>
   </div>
@@ -7,11 +11,19 @@
 <script lang="ts" setup>
 import Button from "../components/shared/Button.vue";
 import FloatButton from "../components/shared/FloatButton.vue";
+import Center from "../components/shared/Center.vue";
 const onClick = () => {
   console.log("click");
 };
 </script>
 <style lang="scss" scoped>
+.icon{
+  width: 128px;
+  height: 128px;
+  &_wrapper{
+    padding: 160px 0;
+  }
+}
 .button {
   width: 100%;
   &_wrapper {
