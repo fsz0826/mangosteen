@@ -4,9 +4,14 @@ import CardLayout from "./CardLayout.vue";
 <template>
   <CardLayout>
     <template #card>
-      <SvgIcon name="cloud" />
+      <SvgIcon class="icon" name="cloud" />
       <h2>云备份<br />再也不怕数据丢失</h2>
     </template>
   </CardLayout>
 </template>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.icon{
+  width: 100px;
+  height: 100px;
+}
+</style>

@@ -29,7 +29,7 @@ watchEffect(() => {
 <template>
   <div class="wrapper">
     <header>
-      <SvgIcon name="mangosteen" />
+      <SvgIcon class="icon" name="mangosteen" />
       <h1>飞老板飞老板</h1>
     </header>
     <main ref="main">
@@ -64,7 +64,7 @@ watchEffect(() => {
     padding-top: 58px;
     color: #d4d4ee;
 
-    > svg {
+    > .icon {
       width: 64px;
       height: 69px;
     }
