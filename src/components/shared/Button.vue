@@ -1,4 +1,14 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+// import { defineComponent } from "vue";
+// interface Props {
+//   onClick?: (e: MouseEvent) => void;
+// }
+// export default defineComponent<Props>({});
+interface Props {
+  onClick?: (e: MouseEvent) => void;
+}
+defineProps<Props>();
+</script>
 
 <template>
   <button class="button"><slot /></button>
