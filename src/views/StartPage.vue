@@ -2,7 +2,7 @@
   <nav>
     <Navbar>
       <template #icon>
-        <SvgIcon name="menu" class="nav_icon" />
+        <SvgIcon name="menu" class="nav_icon" @click="onClickMenu"/>
       </template>
       <template #title> 山竹记账 </template>
     </Navbar>
@@ -11,18 +11,23 @@
     <SvgIcon name="pig" class="center_icon" />
   </Center>
   <div class="button_wrapper">
-    <Button @click="onClick" class="button">开始记账</Button>
+    <Button class="button">开始记账</Button>
   </div>
   <FloatButton icon-name="add" />
+  <Overlay v-if="refOverlayVisible" :on-close="onClickMenu"/>
 </template>
 <script lang="ts" setup>
 import Button from "../components/shared/Button.vue";
 import FloatButton from "../components/shared/FloatButton.vue";
 import Center from "../components/shared/Center.vue";
 import Navbar from "../components/shared/Navbar.vue";
-const onClick = () => {
-  console.log("click");
-};
+import Overlay from "../components/shared/Overlay.vue"
+import {ref} from "vue";
+
+const refOverlayVisible = ref(false)
+const onClickMenu=()=>{
+  refOverlayVisible.value = !refOverlayVisible.value
+}
 </script>
 <style lang="scss" scoped>
 .nav_icon {
