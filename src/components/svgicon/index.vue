@@ -7,7 +7,7 @@
 import { PropType } from "vue";
 const props = defineProps({
   name: {
-    type: String as PropType<String>,
+    type: String as PropType<string>,
     required: true,
   },
 });
