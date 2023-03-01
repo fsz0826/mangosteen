@@ -11,9 +11,13 @@
     <SvgIcon name="pig" class="center_icon" />
   </Center>
   <div class="button_wrapper">
-    <Button class="button">开始记账</Button>
+    <router-link to="/items/create">
+      <Button class="button">开始记账</Button>
+    </router-link>
   </div>
-  <FloatButton icon-name="add" />
+  <router-link to="/items/create">
+    <FloatButton icon-name="add" />
+  </router-link>
   <Overlay v-if="refOverlayVisible" :on-close="onClickMenu"/>
 </template>
 <script lang="ts" setup>
