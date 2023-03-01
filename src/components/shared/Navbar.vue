@@ -1,12 +1,14 @@
 <template>
-  <div class="navbar">
-    <span class="icon_wrapper">
-      <slot name="icon" />
-    </span>
-    <span class="title_wrapper">
-      <slot name="title" />
-    </span>
+  <nav>
+    <div class="navbar">
+     <span class="icon_wrapper">
+        <slot name="icon" />
+     </span>
+      <span class="title_wrapper">
+        <slot name="title" />
+     </span>
   </div>
+  </nav>
 </template>
 <script setup lang="ts"></script>
 <style lang="scss" scoped>
