@@ -24,7 +24,6 @@
 import Button from "../components/shared/Button.vue";
 import FloatButton from "../components/shared/FloatButton.vue";
 import Center from "../components/shared/Center.vue";
-import Navbar from "../components/shared/Navbar.vue";
 import Overlay from "../components/shared/Overlay.vue";
 import { ref } from "vue";
 import MainLayout from "../components/layouts/MainLayout.vue";
