@@ -6,8 +6,12 @@
     <template #title> 记一笔 </template>
     <template #default>
       <Tabs v-model:selected="refKind">
-        <Tab name="支出">列表1</Tab>
-        <Tab name="收入">列表2</Tab>
+        <Tab name="支出">
+          <div>列表1</div>
+        </Tab>
+        <Tab name="收入">
+          <div>列表2</div>
+        </Tab>
       </Tabs>
     </template>
   </MainLayout>

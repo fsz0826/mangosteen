@@ -2,21 +2,28 @@
   <div class="tabs">
     <ol class="tabs_nav">
       <li
-        v-for="item in names"
-        @click="$emit('update:selected', item)"
-        :class="[item === props.selected ? 'selected' : '']"
+        v-for="(item, index) in tabs"
+        :key="index"
+        @click="$emit('update:selected', item.props?.name)"
+        :class="[item.props?.name === props.selected ? 'selected' : '']"
       >
-        {{ item }}
+        {{ item.props?.name }}
       </li>
     </ol>
     <div>
-      {{x}}
+      <component
+        class=""
+        v-for="(item, index) in tabs"
+        :is="item"
+        :key="index"
+        :class="{ selected: item.props?.title === selected }"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { PropType, useSlots } from "vue";
+import { PropType, useSlots, VNode } from "vue";
 import Tab from "./Tab.vue";
 
 const props = defineProps({
@@ -30,7 +37,17 @@ defineEmits(["update:selected"]);
 
 //获取<Tabs>内部的默认内容
 const tabs = useSlots().default?.();
+// console.log(tabs?.[0]?.children?.default?.());
+
+//将<Tabs>内部的默认内容渲染到页面上
+
 // 判断<Tabs>里面是否为<Tab>
+// tabs.forEach((tab) => {
+//   if (!tab) return null;
+//   if (tab.type !== Tab) {
+//     throw new Error("<Tabs> only accepts <Tab> as children");
+//   }
+// });
 (() => {
   if (!tabs) return null;
   for (let i = 0; i < tabs.length; i++) {
@@ -41,9 +58,6 @@ const tabs = useSlots().default?.();
 })();
 
 const names: string[] | undefined = tabs?.map((item) => item.props?.name);
-// const x = tabs?.find((item) => item.props?.name === props.selected);
-// console.log(x);
-
 </script>
 
 <style scoped lang="scss">
