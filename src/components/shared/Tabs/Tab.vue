@@ -1,9 +1,9 @@
 <template>
-  <div><slot /></div>
+  <slot />
 </template>
 
 <script lang="ts" setup>
-import { onMounted, PropType, useSlots } from "vue";
+import { PropType } from "vue";
 
 defineProps({
   name: {

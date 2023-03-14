@@ -1,29 +1,22 @@
 <template>
   <div class="tabs">
     <ol class="tabs_nav">
-      <li
-        v-for="(item, index) in tabs"
-        :key="index"
-        @click="$emit('update:selected', item.props?.name)"
-        :class="[item.props?.name === props.selected ? 'selected' : '']"
-      >
+      <li v-for="(item, index) in tabs" :key="index" @click="$emit('update:selected', item.props?.name)"
+        :class="[item.props?.name === props.selected ? 'selected' : '']">
         {{ item.props?.name }}
       </li>
     </ol>
     <div>
-      <component
-        class=""
-        v-for="(item, index) in tabs"
-        :is="item"
-        :key="index"
-        :class="{ selected: item.props?.title === selected }"
-      />
+      <template v-for="(item, index) in tabs">
+        <component class="" v-if="item.props?.name === props.selected" :is="item" :key="index"
+          :class="{ selected: item.props?.title === selected }" />
+      </template>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { PropType, useSlots, VNode } from "vue";
+import { PropType, useSlots } from "vue";
 import Tab from "./Tab.vue";
 
 const props = defineProps({
@@ -68,13 +61,16 @@ const names: string[] | undefined = tabs?.map((item) => item.props?.name);
     align-items: center;
     text-align: center;
     color: var(--navbar-text);
-    > li {
+
+    >li {
       flex-grow: 1;
       flex-shrink: 0;
       padding: 12px 0;
       background: var(--navbar-bg-end);
+
       &.selected {
         position: relative;
+
         &::after {
           content: "";
           display: block;

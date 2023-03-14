@@ -7,10 +7,10 @@
     <template #default>
       <Tabs v-model:selected="refKind">
         <Tab name="支出">
-          <div>列表1</div>
+          列表1
         </Tab>
         <Tab name="收入">
-          <div>列表2</div>
+          列表2
         </Tab>
       </Tabs>
     </template>
