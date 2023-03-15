@@ -13,6 +13,9 @@
           列表2
         </Tab>
       </Tabs>
+      <div class="inputPad_wrapper">
+        <InputPad />
+      </div>
     </template>
   </MainLayout>
 </template>
@@ -21,9 +24,18 @@
 import MainLayout from "../layouts/MainLayout.vue";
 import Tabs from "../shared/Tabs/Tabs.vue";
 import Tab from "../shared/Tabs/Tab.vue";
-import { ref } from "vue";
+import InputPad from "./InputPad.vue";
 
+import { ref } from "vue";
 const refKind = ref("支出");
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.inputPad_wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: 1px solid red;
+}
+</style>
