@@ -8,8 +8,7 @@
     </ol>
     <div>
       <template v-for="(item, index) in tabs">
-        <component class="" v-if="item.props?.name === props.selected" :is="item" :key="index"
-          :class="{ selected: item.props?.title === selected }" />
+        <component v-if="item.props?.name === props.selected" :is="item" :key="index" />
       </template>
     </div>
   </div>
@@ -30,17 +29,8 @@ defineEmits(["update:selected"]);
 
 //获取<Tabs>内部的默认内容
 const tabs = useSlots().default?.();
-// console.log(tabs?.[0]?.children?.default?.());
-
-//将<Tabs>内部的默认内容渲染到页面上
 
 // 判断<Tabs>里面是否为<Tab>
-// tabs.forEach((tab) => {
-//   if (!tab) return null;
-//   if (tab.type !== Tab) {
-//     throw new Error("<Tabs> only accepts <Tab> as children");
-//   }
-// });
 (() => {
   if (!tabs) return null;
   for (let i = 0; i < tabs.length; i++) {
@@ -50,7 +40,6 @@ const tabs = useSlots().default?.();
   }
 })();
 
-const names: string[] | undefined = tabs?.map((item) => item.props?.name);
 </script>
 
 <style scoped lang="scss">
