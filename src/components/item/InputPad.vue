@@ -2,7 +2,18 @@
   <div class="dateAndAmount">
     <span class="date">
       <SvgIcon name="date" class="dateIcon" />
-      <span> </span>
+      <span>
+        <span @click="showDatePicker"> {{ currentDate }}</span>
+        <Popup v-model:show="refDatePickerVisible" position="bottom">
+          <DatePicker
+            v-model="currentDate"
+            type="date"
+            title="选择年月日"
+            @cancel="hideDatePicker"
+            @confirm="hideDatePicker"
+          />
+        </Popup>
+      </span>
     </span>
     <span class="amount">数字</span>
   </div>
@@ -13,6 +24,25 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ref } from "vue";
+import { DatePicker, Popup } from "vant";
+import dayjs from "dayjs";
+
+const currentDate = new Date();
+const refCurrentDate = ref<Date>(currentDate);
+
+const refDatePickerVisible = ref(false);
+const showDatePicker = () => {
+  refDatePickerVisible.value = true;
+};
+const hideDatePicker = () => {
+  refDatePickerVisible.value = false;
+};
+// const setDate = (date: Date) => {
+//   refCurrentDate.value = date;
+//   hideDatePicker();
+// };
+
 const amountText = () => {};
 const buttons = [
   { text: "1", onClick: () => {} },
