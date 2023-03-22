@@ -56,10 +56,10 @@ const buttons = [
   { text: "7", onClick: () => {} },
   { text: "8", onClick: () => {} },
   { text: "9", onClick: () => {} },
-  { text: "0", onClick: () => {} },
   { text: ".", onClick: () => {} },
-  { text: "删除", onClick: () => {} },
-  { text: "确定", onClick: () => {} },
+  { text: "0", onClick: () => {} },
+  { text: "清空", onClick: () => {} },
+  { text: "提交", onClick: () => {} },
 ];
 </script>
 <style scoped lang="scss">
@@ -85,6 +85,65 @@ const buttons = [
   > .amount {
     font-size: 20px;
     color: var(--amount-text);
+  }
+}
+.buttons {
+  display: grid;
+  grid-template-areas:
+    "b1 b2 b3 d"
+    "b4 b5 b6 d"
+    "b7 b8 b9 s"
+    "b0 b0 bd s";
+  grid-auto-rows: 48px;
+  grid-auto-columns: 1fr;
+  gap: 1px;
+  flex-wrap: wrap;
+  background: var(--number-button-border-color);
+  border-top: 1px solid var(--number-button-border-color);
+  > button {
+    border: none;
+    background: var(--number-button-bg);
+    &:nth-child(1) {
+      grid-area: b1;
+    }
+    &:nth-child(2) {
+      grid-area: b2;
+    }
+    &:nth-child(3) {
+      grid-area: b3;
+    }
+    &:nth-child(4) {
+      grid-area: b4;
+    }
+    &:nth-child(5) {
+      grid-area: b5;
+    }
+    &:nth-child(6) {
+      grid-area: b6;
+    }
+    &:nth-child(7) {
+      grid-area: b7;
+    }
+    &:nth-child(8) {
+      grid-area: b8;
+    }
+    &:nth-child(9) {
+      grid-area: b9;
+    }
+    &:nth-child(10) {
+      grid-area: bd;
+    }
+    &:nth-child(11) {
+      grid-area: b0;
+    }
+    &:nth-child(12) {
+      grid-area: d;
+    }
+    &:nth-child(13) {
+      grid-area: s;
+      background: var(--number-button-bg-important);
+      color: var(--number-button-text-important);
+    }
   }
 }
 </style>
