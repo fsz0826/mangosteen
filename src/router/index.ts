@@ -10,7 +10,7 @@ import ThirdCard from "../components/welcome/ThirdCard.vue";
 import ThirdAction from "../components/welcome/ThirdAction.vue";
 import ForthCard from "../components/welcome/ForthCard.vue";
 import ForthAction from "../components/welcome/ForthAction.vue";
-import Start from "../views/StartPage.vue";
+import StartPage from "../views/StartPage.vue";
 import ItemPage from "../views/ItemPage.vue";
 import ItemList from "../components/item/ItemList.vue";
 import ItemCreate from "../components/item/ItemCreate.vue";
@@ -44,7 +44,7 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
-  { path: "/start", component: Start },
+  { path: "/start", component: StartPage },
   {
     path: "/items",
     component: ItemPage,

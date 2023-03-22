@@ -3,7 +3,7 @@
     <span class="date">
       <SvgIcon name="date" class="dateIcon" />
       <span>
-        <span @click="showDatePicker"> {{ currentDate }}</span>
+        <span @click="showDatePicker"> {{ date }}</span>
         <Popup v-model:show="refDatePickerVisible" position="bottom">
           <DatePicker
             v-model="currentDate"
@@ -24,12 +24,18 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { DatePicker, Popup } from "vant";
 import dayjs from "dayjs";
 
-const currentDate = new Date();
-const refCurrentDate = ref<Date>(currentDate);
+const currentDate = ref([
+  dayjs().format("YYYY"),
+  dayjs().format("MM"),
+  dayjs().format("DD"),
+]);
+const date = computed(() => {
+  return currentDate.value.join("-");
+});
 
 const refDatePickerVisible = ref(false);
 const showDatePicker = () => {
@@ -38,10 +44,6 @@ const showDatePicker = () => {
 const hideDatePicker = () => {
   refDatePickerVisible.value = false;
 };
-// const setDate = (date: Date) => {
-//   refCurrentDate.value = date;
-//   hideDatePicker();
-// };
 
 const amountText = () => {};
 const buttons = [
