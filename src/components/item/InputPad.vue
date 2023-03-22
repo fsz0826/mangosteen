@@ -15,7 +15,7 @@
         </Popup>
       </span>
     </span>
-    <span class="amount">数字</span>
+    <span class="amount">11223.056</span>
   </div>
   <div class="buttons">
     <button v-for="(button, index) in buttons" :key="index" @click="button.onClick">
@@ -63,9 +63,28 @@ const buttons = [
 ];
 </script>
 <style scoped lang="scss">
-.date {
-  .dateIcon {
-    color: red;
+.dateAndAmount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  font-family: monospace;
+  border-top: 1px solid var(--number-button-border-color);
+  > .date {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: var(--date-text);
+    .dateIcon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      fill: var(--amount-text);
+    }
+  }
+  > .amount {
+    font-size: 20px;
+    color: var(--amount-text);
   }
 }
 </style>
