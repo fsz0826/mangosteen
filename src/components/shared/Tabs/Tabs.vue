@@ -1,8 +1,12 @@
 <template>
   <div class="tabs">
     <ol class="tabs_nav">
-      <li v-for="(item, index) in tabs" :key="index" @click="$emit('update:selected', item.props?.name)"
-        :class="[item.props?.name === props.selected ? 'selected' : '']">
+      <li
+        v-for="(item, index) in tabs"
+        :key="index"
+        @click="$emit('update:selected', item.props?.name)"
+        :class="[item.props?.name === props.selected ? 'selected' : '']"
+      >
         {{ item.props?.name }}
       </li>
     </ol>
@@ -39,7 +43,6 @@ const tabs = useSlots().default?.();
     }
   }
 })();
-
 </script>
 
 <style scoped lang="scss">
@@ -51,7 +54,7 @@ const tabs = useSlots().default?.();
     text-align: center;
     color: var(--navbar-text);
 
-    >li {
+    > li {
       flex-grow: 1;
       flex-shrink: 0;
       padding: 12px 0;
