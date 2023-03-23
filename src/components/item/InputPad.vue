@@ -15,7 +15,7 @@
         </Popup>
       </span>
     </span>
-    <span class="amount">{{ amount }}</span>
+    <span class="amount">{{ refAmount }}</span>
   </div>
   <div class="buttons">
     <button v-for="(button, index) in buttons" :key="index" @click="button.onClick">
@@ -45,10 +45,34 @@ const hideDatePicker = () => {
   refDatePickerVisible.value = false;
 };
 
-const amount = ref("0");
+const refAmount = ref("0");
 
-const amountText = (x: string) => {
-  amount.value = x;
+const amountText = (n: string | number) => {
+  const nString = n.toString();
+  if (refAmount.value.length >= 13) {
+    //如果超过13位数，就不再添加
+    return;
+  }
+  if (refAmount.value.includes(".") && refAmount.value.split(".")[1].length >= 2) {
+    //如果小数点后面超过2位数，就不再添加
+    return;
+  }
+  if (nString === "." && refAmount.value.includes(".")) {
+    //如果已经有小数点了，就不再添加
+    return;
+  } else if (nString === "." && refAmount.value === "0") {
+    //如果输入的第一个数字就是小数点，就在前面添加0
+    refAmount.value = "0.";
+    return;
+  } else if (nString === "0" && refAmount.value === "0") {
+    //如果第一个数字就是0，就不再添加
+    return;
+  } else if (refAmount.value === "0") {
+    //如果第一个数字不是0，就替换掉0
+    refAmount.value = nString;
+    return;
+  }
+  refAmount.value += nString;
 };
 const buttons = [
   {
@@ -117,7 +141,12 @@ const buttons = [
       amountText("0");
     },
   },
-  { text: "清空", onClick: () => {} },
+  {
+    text: "清空",
+    onClick: () => {
+      refAmount.value = "0";
+    },
+  },
   { text: "提交", onClick: () => {} },
 ];
 </script>
