@@ -14,6 +14,9 @@ import StartPage from "../views/StartPage.vue";
 import ItemPage from "../views/ItemPage.vue";
 import ItemList from "../components/item/ItemList.vue";
 import ItemCreate from "../components/item/ItemCreate.vue";
+import TagPage from "../views/TagPage.vue";
+import TagCreate from "../components/tags/TagCreate.vue";
+import TagEdit from "../components/tags/TagEdit.vue";
 
 const routes: RouteRecordRaw[] = [
   { path: "/", redirect: "/welcome" },
@@ -53,6 +56,12 @@ const routes: RouteRecordRaw[] = [
       { path: "create", component: ItemCreate },
     ],
   },
+  {
+    path: "/tags", component: TagPage, children: [
+      { path: 'create', component: TagCreate },
+      { path: ':id', component: TagEdit }
+    ]
+  }
 ];
 
 const router = createRouter({
