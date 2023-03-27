@@ -10,7 +10,7 @@
           <label class="formLabel">
             <span class="formItem_name">标签名</span>
             <div class="formItem_value">
-              <input class="formItem input error" type="" />
+              <input v-model="formDate.name" class="formItem input error" type="" />
             </div>
             <div class="formItem_errorHint">
               <span>必填</span>
@@ -21,149 +21,7 @@
           <label class="formLabel">
             <span class="formItem_name">符号</span>
             <div class="formItem_value">
-              <div class="formItem emojiList error">
-                <nav>
-                  <span class="selected">表情</span>
-                  <span>手势</span>
-                  <span>职业</span>
-                  <span>衣服</span>
-                  <span>动物</span>
-                  <span>自然</span>
-                  <span>食物</span>
-                  <span>运动</span>
-                  <span>手势</span>
-                  <span>职业</span>
-                  <span>衣服</span>
-                  <span>动物</span>
-                  <span>自然</span>
-                  <span>食物</span>
-                  <span>运动</span>
-                </nav>
-                <ol>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                  <li>😀</li>
-                </ol>
-              </div>
+              <EmojiSelect class="formItem error" />
             </div>
             <div class="formItem_errorHint">
               <span>必填</span>
@@ -182,8 +40,15 @@
   </MainLayout>
 </template>
 <script setup lang="ts">
+import { reactive } from "vue";
 import MainLayout from "../layouts/MainLayout.vue";
 import Button from "../shared/Button.vue";
+import EmojiSelect from "../shared/EmojiSelect.vue";
+
+const formDate = reactive({
+  name: "",
+  sign: "",
+});
 </script>
 <style lang="scss" scoped>
 .tips {
@@ -215,52 +80,6 @@ import Button from "../shared/Button.vue";
     box-shadow: inset 0 0 3px var(--input-shadow);
     &.error {
       border-color: var(--error-color);
-    }
-  }
-  &.emojiList {
-    flex-grow: 1;
-    border: 1px solid var(--input-border-color);
-    border-radius: var(--input-radius);
-    font-size: 18px;
-    font-size: 14px;
-    &.error {
-      border-color: var(--error-color);
-    }
-    > nav {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow: auto;
-      padding: 0 4px;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      > span {
-        flex-shrink: 0;
-        display: inline-block;
-        padding: 8px;
-        color: var(--emoji-nav-text);
-        &.selected {
-          color: var(--emoji-nav-text-selected);
-        }
-      }
-    }
-    > ol {
-      display: flex;
-      flex-wrap: wrap;
-      font-size: 22px;
-      line-height: 32px;
-      height: calc(32px * 12);
-      overflow: auto;
-      padding: 0 4px;
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      > li {
-        flex-shrink: 0;
-        flex-grow: 0;
-        width: 10%;
-        text-align: center;
-      }
     }
   }
   &_name {
